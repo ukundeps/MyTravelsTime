@@ -12,6 +12,11 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -21,7 +26,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.ui.FluentWait;
-
+import org.testng.annotations.DataProvider;
 
 import com.mytravels.constant.Constant;
 
@@ -39,9 +44,9 @@ public class Keyword extends Constant{
 
 	public static String getParameter(String parameter) {
 		prop = new Properties();
-		String locator = "";
+		String locator = " ";
 		try {
-			FileInputStream fis = new FileInputStream(getParameter("ORPath"));
+			FileInputStream fis = new FileInputStream("C:\\Users\\Lenovo\\eclipse-workspace\\NewWorkspace\\MyTravelsTime\\src\\main\\resources\\ObjectRepository.properties");
 			prop.load(fis);
 			locator = prop.getProperty(parameter).trim();
 
@@ -350,6 +355,45 @@ public class Keyword extends Constant{
 		return screenshotPath;
 
 	}
+	
+	/** 
+	 * This method will read the data from excel.
+	 */
+	@DataProvider
+	public static Object[][] excelFileReading(String filepath) {
+		Object[][] data = null;
+		try {
+			FileInputStream file = new FileInputStream(filepath);
+			XSSFWorkbook book = new XSSFWorkbook(file);
+			XSSFSheet sheet = book.getSheetAt(0);
+			int rows = sheet.getLastRowNum();
+			XSSFRow row = sheet.getRow(0);
+			int columns = row.getLastCellNum();
+			data = new Object[rows][columns];
+			DataFormatter formatter=new DataFormatter();
+			for (int i = 0; i < rows; i++) {
+				row = sheet.getRow(i);
+
+				for (int j = 0; j < columns; j++) {
+
+					XSSFCell cell = row.getCell(j);
+					
+					data[i][j]=formatter.formatCellValue(cell);
+					
+					}
+
+				}
+			
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	return data;
+	}
+	
 	
 
 }

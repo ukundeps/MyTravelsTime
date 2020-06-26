@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="My Travels Time Suite">
+
+	<listeners>
+		<listener class-name="com.mytravels.listener.ExtentReport" />
+	</listeners>
+
+
+	<test name="My Travels Time Test Cases">
+		<classes>
+			
+			<class name="com.mytravels.pagetest.LoginPageTest"></class>
+		
+
+		</classes>
+	</test>
+</suite>
