@@ -4,7 +4,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-import com.mytravels.keyword.Keyword;
+import com.mytravels.base.Base;
 
 
 
@@ -24,7 +24,7 @@ public class Listener  implements ITestListener{
 	public void onTestFailure(ITestResult result) {
 
 		System.out.println("Test Case Execution Failed : " + result.getName());
-		Keyword.failedTCScreenshot(result.getName());
+		Base.failedTCScreenshot(result.getName());
 	}
 
 	@Override

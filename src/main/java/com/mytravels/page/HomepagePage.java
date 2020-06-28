@@ -4,10 +4,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.mytravels.base.Base;
 
-import com.mytravels.keyword.Keyword;
 
-public class HomepagePage extends Keyword {
+public class HomepagePage extends Base {
 	
 	@FindBy(xpath="//a[text()='Login']")
 	WebElement login;

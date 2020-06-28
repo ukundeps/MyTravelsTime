@@ -1,4 +1,4 @@
-package com.mytravels.keyword;
+package com.mytravels.base;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,8 +32,8 @@ import com.mytravels.constant.Constant;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Keyword extends Constant{
-	public static Logger log = Logger.getLogger(Keyword.class);
+public class Base extends Constant{
+	public static Logger log = Logger.getLogger(Base.class);
 
 	/**
 	 * To get Configuration Input from ObjectRepository.properties file

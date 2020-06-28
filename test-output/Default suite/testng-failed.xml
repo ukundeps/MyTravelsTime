@@ -5,7 +5,7 @@
     <classes>
       <class name="com.mytravels.pagetest.LoginPageTest">
         <methods>
-          <include name="verify_loginpage_Title"/>
+          <include name="verify_successful_login"/>
           <include name="tearDown"/>
           <include name="setUp"/>
         </methods>

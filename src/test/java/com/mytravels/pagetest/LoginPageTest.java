@@ -45,13 +45,14 @@ public class LoginPageTest extends LoginPage{
 		
 	}
 	
-	/*@Test(description = "To verify successful login", groups = "Usability Testing")
+	@Test(description = "To verify successful login", groups = "Usability Testing")
 	public void verify_successful_login() {
 		home.clickOnLoginLink();
 		dashboard=login.loginsuccess("sushanttayade123@gmail.com", "sushant.123");
 		
-	}*/
-	
+		Assert.assertEquals(dashboard.getUsername(), "Sushant Tayade", "Username not matching");
+		
+	}
 	
 	
 	

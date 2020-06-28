@@ -1,0 +1,16 @@
+2020-Jun-28 10:00:03,595 [main] com.mytravels.base.Base 
+  INFO  Current browser window is Closed!!
+2020-Jun-28 10:00:06,515 [main] com.mytravels.base.Base 
+  INFO  chrome is opened!! 
+2020-Jun-28 10:00:07,667 [main] com.mytravels.base.Base 
+  INFO  Maximized Browser Window!!
+2020-Jun-28 10:00:09,394 [main] com.mytravels.base.Base 
+  INFO  https://crm.mytravelstime.com/ is launched!!
+2020-Jun-28 10:00:10,302 [main] com.mytravels.base.Base 
+  INFO  Deleted All Cookies!!
+2020-Jun-28 10:00:10,312 [main] com.mytravels.base.Base 
+  INFO  20SECONDS Page load timeout  is applied!!
+2020-Jun-28 10:00:10,322 [main] com.mytravels.base.Base 
+  INFO  20SECONDS Implicit Wait is applied!!
+2020-Jun-28 10:00:38,755 [main] com.mytravels.base.Base 
+  INFO  Current browser window is Closed!!
