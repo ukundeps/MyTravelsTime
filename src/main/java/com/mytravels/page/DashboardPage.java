@@ -11,6 +11,8 @@ public class DashboardPage extends Base{
 	@FindBy(xpath="//a[@id=\"navbarDropdown\"]")
 	WebElement username;
 	
+	@FindBy(xpath="//p[text()='Leads']")
+	WebElement LeadsDropdown;
 	
 	public DashboardPage() {
 		PageFactory.initElements(driver, this);
