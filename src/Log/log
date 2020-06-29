@@ -1,6 +1,18 @@
-2020-Jun-29 14:35:00,242 [main] com.mytravels.base.Base 
+2020-Jun-29 16:55:01,781 [main] com.mytravels.base.Base 
   INFO  chrome is opened and Configured!! 
-2020-Jun-29 14:35:02,343 [main] com.mytravels.base.Base 
+2020-Jun-29 16:55:07,341 [main] com.mytravels.base.Base 
   INFO  https://crm.mytravelstime.com/ is launched!!
-2020-Jun-29 14:35:14,500 [main] com.mytravels.base.Base 
+2020-Jun-29 16:55:17,530 [main] com.mytravels.base.Base 
+  INFO  Current browser window is Closed!!
+2020-Jun-29 16:55:22,014 [main] com.mytravels.base.Base 
+  INFO  chrome is opened and Configured!! 
+2020-Jun-29 16:55:24,433 [main] com.mytravels.base.Base 
+  INFO  https://crm.mytravelstime.com/ is launched!!
+2020-Jun-29 16:55:32,188 [main] com.mytravels.base.Base 
+  INFO  Current browser window is Closed!!
+2020-Jun-29 16:55:36,079 [main] com.mytravels.base.Base 
+  INFO  chrome is opened and Configured!! 
+2020-Jun-29 16:55:38,331 [main] com.mytravels.base.Base 
+  INFO  https://crm.mytravelstime.com/ is launched!!
+2020-Jun-29 16:55:45,335 [main] com.mytravels.base.Base 
   INFO  Current browser window is Closed!!

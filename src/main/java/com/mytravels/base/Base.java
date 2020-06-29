@@ -224,12 +224,13 @@ public class Base extends TestUtil {
 		
 	/**
 	 * This method will read the data from excel.
+	 * @return 
 	 */
 	@DataProvider
-	public static Object[][] excelFileReading(String filepath) {
+	public static Object[][] excelFileReading() {
 		Object[][] data = null;
 		try {
-			FileInputStream file = new FileInputStream(filepath);
+			FileInputStream file = new FileInputStream(exelPath);
 			XSSFWorkbook book = new XSSFWorkbook(file);
 			XSSFSheet sheet = book.getSheetAt(0);
 			int rows = sheet.getLastRowNum();
@@ -255,8 +256,9 @@ public class Base extends TestUtil {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 		return data;
+
+		
 	}
 	
 	 

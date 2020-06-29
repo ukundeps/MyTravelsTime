@@ -7,6 +7,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -14,6 +15,7 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.mytravels.base.Base;
 import com.mytravels.page.DashboardPage;
 import com.mytravels.page.HomepagePage;
 import com.mytravels.page.LoginPage;
@@ -30,8 +32,8 @@ public class LoginPageTest extends LoginPage{
 		htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + "/ExtentReports/MyTravelsExtentReport.html");
 		extent = new ExtentReports();
 		extent.attachReporter(htmlReporter);
-		extent.setSystemInfo("Host Name", "Priya PC");
-		extent.setSystemInfo("User Name", "Priya Ukunde");
+		extent.setSystemInfo("Host Name", "PC");
+		extent.setSystemInfo("User Name", "Ritu Singh");
 		extent.setSystemInfo("Environment", "QA");
 	}
 	
@@ -59,13 +61,16 @@ public class LoginPageTest extends LoginPage{
 		
 	}
 	
-	@Test(description = "To verify successful login", groups = "Usability Testing")
-	public void verify_successful_login() {
+	
+	
+	
+	@Test( dataProvider="excelFileReading",dataProviderClass=com.mytravels.base.Base.class)
+	public void verify_successful_login(String Email,String Password) {
 		extentLog = extent.createTest("Verify Successfull Login");
 		home.clickOnLoginLink();
-		dashboard=login.loginsuccess("sushanttayade123@gmail.com", "sushant.123");
+		dashboard=login.loginsuccess(Email, Password);
 		
-		Assert.assertEquals(dashboard.getUsername(), "Sushant Tayade", "Username not matching");
+		Assert.assertEquals(dashboard.getUsername(), "Sushant Tayade", "Invalid user");
 		
 	}
 	
