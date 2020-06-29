@@ -3,16 +3,14 @@
 <suite name="My Travels Time Suite">
 
 	<listeners>
-		<listener class-name="com.mytravels.listener.ExtentReport" />
+		<listener class-name="com.mytravels.listener.Listener" />
 	</listeners>
-
-
-	<test name="My Travels Time Test Cases">
+	<test name="My Travels Time Tests">
 		<classes>
-			
+			<class name="com.mytravels.pagetest.HomepagePageTest"></class>
 			<class name="com.mytravels.pagetest.LoginPageTest"></class>
-		
-
 		</classes>
 	</test>
+	
+
 </suite>

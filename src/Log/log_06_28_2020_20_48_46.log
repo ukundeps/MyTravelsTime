@@ -1,0 +1,8 @@
+2020-Jun-28 20:48:44,011 [main] com.mytravels.base.Base 
+  INFO  chrome is opened and Configured!! 
+2020-Jun-28 20:48:45,837 [main] com.mytravels.base.Base 
+  INFO  https://crm.mytravelstime.com/ is launched!!
+2020-Jun-28 20:48:45,857 [main] com.mytravels.base.Base 
+  INFO  My Travels Time - CRM  :Returned Current Webpage Title!!
+2020-Jun-28 20:48:46,058 [main] com.mytravels.base.Base 
+  INFO  Current browser window is Closed!!

@@ -1,0 +1,22 @@
+2020-Jun-29 14:16:17,697 [main] com.mytravels.base.Base 
+  INFO  chrome is opened and Configured!! 
+2020-Jun-29 14:16:19,747 [main] com.mytravels.base.Base 
+  INFO  https://crm.mytravelstime.com/ is launched!!
+2020-Jun-29 14:16:19,774 [main] com.mytravels.base.Base 
+  INFO  My Travels Time - CRM  :Returned Current Webpage Title!!
+2020-Jun-29 14:16:20,295 [main] com.mytravels.base.Base 
+  INFO  Screenshot file not found!!
+2020-Jun-29 14:16:20,296 [main] com.mytravels.base.Base 
+  INFO  Screenshot taken Successfully!!
+2020-Jun-29 14:16:21,194 [main] com.mytravels.base.Base 
+  INFO  Current browser window is Closed!!
+2020-Jun-29 14:16:31,146 [main] com.mytravels.base.Base 
+  INFO  chrome is opened and Configured!! 
+2020-Jun-29 14:16:33,398 [main] com.mytravels.base.Base 
+  INFO  https://crm.mytravelstime.com/ is launched!!
+2020-Jun-29 14:16:37,176 [main] com.mytravels.base.Base 
+  INFO  Current browser window is Closed!!
+2020-Jun-29 14:16:47,066 [main] com.mytravels.base.Base 
+  INFO  chrome is opened and Configured!! 
+2020-Jun-29 14:16:49,188 [main] com.mytravels.base.Base 
+  INFO  https://crm.mytravelstime.com/ is launched!!

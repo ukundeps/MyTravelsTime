@@ -26,13 +26,19 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
 import org.testng.annotations.DataProvider;
 
-import com.mytravels.constant.Constant;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
+import com.mytravels.util.TestUtil;
+import com.relevantcodes.extentreports.LogStatus;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Base extends Constant{
+public class Base extends TestUtil {
 	public static Logger log = Logger.getLogger(Base.class);
 
 	/**
@@ -46,7 +52,8 @@ public class Base extends Constant{
 		prop = new Properties();
 		String locator = " ";
 		try {
-			FileInputStream fis = new FileInputStream("C:\\Users\\Lenovo\\eclipse-workspace\\NewWorkspace\\MyTravelsTime\\src\\main\\resources\\ObjectRepository.properties");
+			FileInputStream fis = new FileInputStream(
+					"C:\\Users\\NRK\\javapract\\PriyaRevison\\MyTravelsTime\\src\\main\\resources\\ObjectRepository.properties");
 			prop.load(fis);
 			locator = prop.getProperty(parameter).trim();
 
@@ -67,9 +74,9 @@ public class Base extends Constant{
 	 * 
 	 * @param browserName
 	 */
-	public static void openBrowser() {
-		String browser = getParameter("BrowserName");
-		switch (browser) {
+	public static void openBrowserAnConfigure() {
+
+		switch (browserName) {
 		case "chrome":
 			WebDriverManager.chromedriver().version("2.40").setup();
 			driver = new ChromeDriver();
@@ -96,147 +103,21 @@ public class Base extends Constant{
 			break;
 
 		}
-		log.info(browser + " is opened!! ");
-
-	}
-
-	/**
-	 * This Method will Maximised the opened Browser Window
-	 */
-	public static void maxiBrowserWindow() {
 		driver.manage().window().maximize();
-		log.info("Maximized Browser Window!!");
-	}
-
-	/**
-	 * This method will delete all cookies
-	 */
-	public static void deleteAllCookies() {
 		driver.manage().deleteAllCookies();
-		log.info("Deleted All Cookies!!");
+		driver.manage().timeouts().pageLoadTimeout(pageLoadTimeOutDuration, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(implicitWaitDuration, TimeUnit.SECONDS);
+		log.info(browserName + " is opened and Configured!! ");
+
 	}
 
 	/**
-	 * Sets the amount of time to wait for a page load to complete
-	 * 
-	 * @param duration
-	 *            :time
-	 * @param timeUnit
-	 *            :Unit
+	 * This method is used to provided nexplicit wait
 	 */
-	public static void pageLoadTimeOut() {
-		long duration = Long.parseLong(getParameter("PageLoadTimeOutDuration"));
-		String timeUnit = getParameter("PageLoadTimeOutUnit");
-		switch (timeUnit) {
-		case "NANOSECONDS":
-			driver.manage().timeouts().pageLoadTimeout(duration, TimeUnit.NANOSECONDS);
-			break;
-		case "MICROSECONDS":
-			driver.manage().timeouts().pageLoadTimeout(duration, TimeUnit.MICROSECONDS);
-			break;
-		case "MILLISECONDS":
-			driver.manage().timeouts().pageLoadTimeout(duration, TimeUnit.MILLISECONDS);
-			break;
-		case "SECONDS":
-			driver.manage().timeouts().pageLoadTimeout(duration, TimeUnit.SECONDS);
-			break;
-		case "MINUTES":
-			driver.manage().timeouts().pageLoadTimeout(duration, TimeUnit.MINUTES);
-			break;
-		case "HOURS":
-			driver.manage().timeouts().pageLoadTimeout(duration, TimeUnit.HOURS);
-			break;
-		case "DAYS":
-			driver.manage().timeouts().pageLoadTimeout(duration, TimeUnit.DAYS);
-			break;
-		default:
-			log.error("Entered Time Unit  Not Matched!!");
-			break;
-		}
-		log.info(duration + timeUnit + " Page load timeout  is applied!!");
-	}
-
-	/**
-	 * Specifies the amount of time the driver should wait when searching for an
-	 * element if it isnot immediately present.
-	 * 
-	 * @param duration
-	 *            :time
-	 * @param timeUnit
-	 *            :Unit
-	 */
-
-	public static void implicitWait() {
-		long duration = Long.parseLong(getParameter("ImplicitWaitDuration"));
-		String timeUnit = getParameter("ImplicitWaitTimeUnit");
-		switch (timeUnit) {
-		case "NANOSECONDS":
-			driver.manage().timeouts().implicitlyWait(duration, TimeUnit.NANOSECONDS);
-			break;
-		case "MICROSECONDS":
-			driver.manage().timeouts().implicitlyWait(duration, TimeUnit.MICROSECONDS);
-			break;
-		case "MILLISECONDS":
-			driver.manage().timeouts().implicitlyWait(duration, TimeUnit.MILLISECONDS);
-			break;
-		case "SECONDS":
-			driver.manage().timeouts().implicitlyWait(duration, TimeUnit.SECONDS);
-			break;
-		case "MINUTES":
-			driver.manage().timeouts().implicitlyWait(duration, TimeUnit.MINUTES);
-			break;
-		case "HOURS":
-			driver.manage().timeouts().implicitlyWait(duration, TimeUnit.HOURS);
-			break;
-		case "DAYS":
-			driver.manage().timeouts().implicitlyWait(duration, TimeUnit.DAYS);
-			break;
-		default:
-			log.error("Entered Time Unit  Not Matched!!");
-			break;
-		}
-		log.info(duration + timeUnit + " Implicit Wait is applied!!");
-
-	}
-
 	public static void expllicitWait() {
-		long duration = Long.parseLong(getParameter("ExplicitWaitDuration"));
-		String timeUnit = getParameter("ExplicitWaitTimeUnit");
-		switch (timeUnit) {
-		case "NANOSECONDS":
-			wait = new FluentWait(driver);
-			wait.withTimeout(duration, TimeUnit.NANOSECONDS);
-			break;
-		case "MICROSECONDS":
-			wait = new FluentWait(driver);
-			wait.withTimeout(duration, TimeUnit.MICROSECONDS);
-			break;
-
-		case "MILLISECONDS":
-			wait = new FluentWait(driver);
-			wait.withTimeout(duration, TimeUnit.MILLISECONDS);
-			break;
-		case "SECONDS":
-			wait = new FluentWait(driver);
-			wait.withTimeout(duration, TimeUnit.SECONDS);
-			break;
-		case "MINUTES":
-			wait = new FluentWait(driver);
-			wait.withTimeout(duration, TimeUnit.MINUTES);
-			break;
-		case "HOURS":
-			wait = new FluentWait(driver);
-			wait.withTimeout(duration, TimeUnit.HOURS);
-			break;
-		case "DAYS":
-			wait = new FluentWait(driver);
-			wait.withTimeout(duration, TimeUnit.DAYS);
-			break;
-		default:
-			log.error("Entered Time Unit  Not Matched!!");
-			break;
-		}
-		log.info(duration + timeUnit + " Explicit wait is applied!!");
+		wait = new FluentWait(driver);
+		wait.withTimeout(explicitWaitDuration, TimeUnit.SECONDS);
+		log.info(explicitWaitDuration + explicitWaitTimeUnit + " Explicit wait is applied!!");
 	}
 
 	/**
@@ -245,9 +126,8 @@ public class Base extends Constant{
 	 * @param url
 	 */
 	public static void launchURL() {
-		String url = getParameter("BaseURL");
-		driver.get(url);
-		log.info(url + " is launched!!");
+		driver.get(baseURL);
+		log.info(baseURL + " is launched!!");
 	}
 
 	/**
@@ -266,28 +146,7 @@ public class Base extends Constant{
 		log.info("All browser windows are closed!!");
 	}
 
-	/**
-	 * This method will take screenshot of Failed Test cases
-	 * 
-	 * @param tcName
-	 */
-	public static void failedTCScreenshot(String tcName) {
-		DateFormat dateFormat = new SimpleDateFormat("dd-MM-YY  hh-mm-ss");
-		Date date = new Date();
-		String datetime = dateFormat.format(date);
-		TakesScreenshot ts = (TakesScreenshot) driver;
-		File source = ts.getScreenshotAs(OutputType.FILE);
-		try {
-			FileUtils.copyFile(source,
-					new File("C:\\Users\\NRK\\javapract\\PriyaRevison\\AAA_PriyaProject\\FailedTCScreenshots\\" + tcName
-							+ " dated " + datetime + ".png"));
-		} catch (IOException e) {
-			log.error("Screenshot file not found!!");
-			e.printStackTrace();
-		}
-		log.info("Screenshot taken Successfully!!");
-	}
-
+	
 	/**
 	 * This method will navigate the webpage to back
 	 */
@@ -332,31 +191,38 @@ public class Base extends Constant{
 		return title;
 	}
 
-	// This method will return path of Screenshot so that from this path captured
-	// screenshot can be attached to Extent Report Automatically
-	public static String screenshotforExtentReport(WebDriver driver, String tcName) {
-
-		DateFormat dateFormat = new SimpleDateFormat("dd-MM-YY hh-mm-ss");
-		Date date = new Date();
-		String datetime = dateFormat.format(date);
-
-		String screenshotPath = getParameter("failedTCScreenshoFilePath")+tcName + " dated " + datetime + ".png";
-
-		TakesScreenshot ts = (TakesScreenshot) driver;
-		File source = ts.getScreenshotAs(OutputType.FILE);
-		try {
-			FileUtils.copyFile(source, new File(screenshotPath));
-		} catch (IOException e) {
-			log.info("Screenshot file not found!!");
-			e.printStackTrace();
-		}
-		log.info("Screenshot taken Successfully!!");
-
-		return screenshotPath;
-
-	}
 	
-	/** 
+	
+
+	// This method will return path of Screenshot so that from this path captured
+		// screenshot can be attached to Extent Report Automatically
+		public static String screenshotforExtentReport(WebDriver driver, String tcName) {
+
+			DateFormat dateFormat = new SimpleDateFormat("dd-MM-YY hh-mm-ss");
+			Date date = new Date();
+			String datetime = dateFormat.format(date);
+
+			String screenshotPath = failedTCScreenshoFilePath+ tcName + " dated " + datetime + ".png";
+
+			TakesScreenshot ts = (TakesScreenshot) driver;
+			File source = ts.getScreenshotAs(OutputType.FILE);
+			try {
+				FileUtils.copyFile(source, new File(screenshotPath));
+			} catch (IOException e) {
+				log.info("Screenshot file not found!!");
+				e.printStackTrace();
+			}
+			log.info("Screenshot taken Successfully!!");
+
+			return screenshotPath;
+
+		}
+		
+
+
+
+		
+	/**
 	 * This method will read the data from excel.
 	 */
 	@DataProvider
@@ -370,30 +236,30 @@ public class Base extends Constant{
 			XSSFRow row = sheet.getRow(0);
 			int columns = row.getLastCellNum();
 			data = new Object[rows][columns];
-			DataFormatter formatter=new DataFormatter();
+			DataFormatter formatter = new DataFormatter();
 			for (int i = 0; i < rows; i++) {
 				row = sheet.getRow(i);
 
 				for (int j = 0; j < columns; j++) {
 
 					XSSFCell cell = row.getCell(j);
-					
-					data[i][j]=formatter.formatCellValue(cell);
-					
-					}
+
+					data[i][j] = formatter.formatCellValue(cell);
 
 				}
-			
+
+			}
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-	return data;
+
+		return data;
 	}
 	
-	
+	 
+
 
 }
