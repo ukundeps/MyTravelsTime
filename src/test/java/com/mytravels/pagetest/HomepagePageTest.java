@@ -29,7 +29,7 @@ public class HomepagePageTest extends HomepagePage {
 		htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + "/ExtentReports/MyTravelsExtentReport.html");
 		extent = new ExtentReports();
 		extent.attachReporter(htmlReporter);
-		extent.setSystemInfo("Host Name", "Priya PC");
+		extent.setSystemInfo("Host Name", "PC");
 		extent.setSystemInfo("User Name", "Priya Ukunde");
 		extent.setSystemInfo("Environment", "QA");
 	}
