@@ -65,7 +65,7 @@ public class LoginPageTest extends LoginPage{
 	
 	
 	@Test( dataProvider="excelFileReading",dataProviderClass=com.mytravels.base.Base.class)
-	public void verify_successful_login(String Email,String Password) {
+	public void verify_validandinvalid_login(String Email,String Password) {
 		extentLog = extent.createTest("Verify Successfull Login");
 		home.clickOnLoginLink();
 		dashboard=login.loginsuccess(Email, Password);
