@@ -30,11 +30,14 @@ public class LoginPage extends Base {
 
 	}
 	
-	public DashboardPage loginsuccess(String Email,String Password) {
-	email.sendKeys(Email);
-	password.sendKeys(Password);
-	LoginBtn.click();
-	return new DashboardPage();
+	
+
+
+	public DashboardPage loginmethod(String Email, String Password) {
+		email.sendKeys(Email);
+		password.sendKeys(Password);
+		LoginBtn.click();
+		return new DashboardPage();
 	}
 
 

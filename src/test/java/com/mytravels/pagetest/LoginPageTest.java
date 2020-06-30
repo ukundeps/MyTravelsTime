@@ -68,7 +68,7 @@ public class LoginPageTest extends LoginPage{
 	public void verify_validandinvalid_login(String Email,String Password) {
 		extentLog = extent.createTest("Verify Successfull Login");
 		home.clickOnLoginLink();
-		dashboard=login.loginsuccess(Email, Password);
+		dashboard=login.loginmethod(Email, Password);
 		
 		Assert.assertEquals(dashboard.getUsername(), "Sushant Tayade", "Invalid user");
 		
